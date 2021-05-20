@@ -3,34 +3,30 @@ import {ComponentCanDeactivate} from '../../exit.order.guard';
 import {Observable} from 'rxjs';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
-import {User} from '../../model/User';
-import {News} from '../../model/News';
-import {NewsService} from '../../services/news.service';
-import {LoggingService} from '../../services/logging.service';
+import {User} from "../../model/User";
+import {News} from "../../model/News";
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css'],
-  providers: [NewsService, LoggingService]
+  styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit, ComponentCanDeactivate {
 
  user: User  = null;
  saved = false;
- model: News;
- categoryName: string;
- id: number;
 
-  constructor(private accountService: AuthService, private newsService: NewsService) {
+  constructor(private accountService: AuthService) {
     this.user = this.accountService.userValue[0];
   }
 
   orderForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    image: new FormControl('', [Validators.required]),
-    category: new FormControl(''),
-    information: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required,
+      Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+    phone: new FormControl('', [Validators.required, Validators.minLength(11)]),
+    address: new FormControl('', [Validators.required]),
+    comment: new FormControl()
   });
 
   // tslint:disable-next-line:typedef
@@ -38,49 +34,24 @@ export class OrderComponent implements OnInit, ComponentCanDeactivate {
     return this.orderForm.get('name');
   }
   // tslint:disable-next-line:typedef
-  get image(){
-    return this.orderForm.get('image');
+  get email(){
+    return this.orderForm.get('email');
   }
   // tslint:disable-next-line:typedef
-  get category(){
-    return this.orderForm.get('category');
+  get phone(){
+    return this.orderForm.get('phone');
   }
   // tslint:disable-next-line:typedef
-  get information(){
-    return this.orderForm.get('information');
+  get address(){
+    return this.orderForm.get('address');
   }
   // tslint:disable-next-line:typedef
   save(){
     this.saved = true;
-    this.prepareModel();
   }
 
   ngOnInit(): void {
-    this.newsService.getAllBreeds().subscribe(res => {
-      this.id = res.length + 1;
-    });
   }
-
-  // tslint:disable-next-line:typedef
-  prepareModel() {
-    // tslint:disable-next-line:triple-equals
-    if (this.orderForm.getRawValue().category == '1') {
-      this.categoryName = 'Politics';
-      // tslint:disable-next-line:triple-equals
-    } else if (this.orderForm.getRawValue().category == '2') {
-      this.categoryName = 'Science';
-      // tslint:disable-next-line:triple-equals
-    } else if (this.orderForm.getRawValue().category == '3') {
-      this.categoryName = 'Sport';
-    }
-    this.model = new News(this.id, this.orderForm.getRawValue().category, this.categoryName,
-      this.orderForm.getRawValue().name, this.orderForm.getRawValue().image, this.orderForm.getRawValue().image,
-      this.orderForm.getRawValue().image,
-      this.orderForm.getRawValue().information);
-
-    this.newsService.addNews(this.model).subscribe(data => console.log(data), error => console.log(error));
-  }
-
 
   canDeactivate(): boolean | Observable<boolean> {
     if (!this.saved){
@@ -92,5 +63,12 @@ export class OrderComponent implements OnInit, ComponentCanDeactivate {
 
   order(): any {
     alert('Order successfully accepted! Please, wait.');
+  }
+
+  delete(pet: News): any {
+    // tslint:disable-next-line:prefer-for-of
+    this.user.basket = this.user.basket.filter(item => item !== pet);
+    this.accountService.update(this.user).subscribe(data => console.log(data), error => console.log(error));
+    console.log(this.user);
   }
 }

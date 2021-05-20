@@ -5,7 +5,7 @@
   <section class="text-center">
 
     <!-- Section heading -->
-    <h3 class="font-weight-bold mb-2">{{news.category}}</h3>
+    <h3 class="font-weight-bold mb-2">About</h3>
     <hr>
 
     <div class="row mt-5">
@@ -13,20 +13,20 @@
 
         <!--Carousel Wrapper-->
         <div id="carousel-thumb1" class="carousel slide carousel-fade carousel-thumbnails mb-5 pb-4"
-             data-ride="carousel">
+             data-ride="carousel" style="margin-left: 50px">
 
           <!--Slides-->
           <div class="carousel-inner text-center text-md-left" role="listbox">
             <div class="carousel-item active pictures">
-              <img src="{{news.image}}"
+              <img src="/assets/0009.jpg"
                    alt="First slide" class="img-fluid mainPictures z-depth-2">
             </div>
             <div class="carousel-item pictures">
-              <img src="{{news.image2}}"
+              <img src="/assets/0010.jpg"
                    alt="Second slide" class="img-fluid mainPictures z-depth-2">
             </div>
             <div class="carousel-item pictures">
-              <img src="{{news.image3}}"
+              <img src="/assets/0011.jpg"
                    alt="Third slide" class="img-fluid mainPictures z-depth-2">
             </div>
           </div>
@@ -51,72 +51,23 @@
 
         <h2
           class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">
-          {{news.name}}
-          <a class="btn-floating btn-action ml-auto mr-4 " (click)="changeFav()"
-             style="text-align: right; float: right;">
-            <i class="fas fa-star" *ngIf="getFavStatus()"></i><i class="far fa-star" *ngIf="!getFavStatus()"></i></a>
+          Solar energy
         </h2>
-
-        <h3 class="h3-responsive text-center text-md-right mb-5 ml-xl-0 ml-4">
-          <span class="grey-text">
-            Price: {{news.cost}}
-          </span>
-        </h3>
-
+        <br>
         <div class="font-weight-normal">
-          <p class="ml-xl-0 ml-4">{{news.information}}</p>
-        </div>
-        <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
-          <span class="grey-text">
-            <small>
-              <a class="btn-floating btn-action ml-auto mr-4 " (click)="changeLike()" style="text-align: left;
-    float: left;">
-              {{news.likes}}
-                <i class="fas fa-heart" *ngIf="getUserLiked()"></i><i class="far fa-heart" *ngIf="!getUserLiked()"></i>
-                </a>
-            </small>
-          </span>
-        </h3>
-        <div style="margin-top: 100px">
-          <div class="row mt-5 mb-4">
-            <div class="col-md-12 text-center text-md-left text-md-right">
-              <a class="btn btn-primary btn-rounded" (click)="addToBasket()">
-                <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i>Add to basket</a>
-            </div>
-          </div>
+          <p class="ml-xl-0 ml-4">Solar energy — the direction of alternative energy, based on the direct use of solar radiation to generate energy in any form. Solar energy uses a renewable energy source and is "environmentally friendly", that is, it does not produce harmful waste during the active phase of use. Energy production from solar power plants is well aligned with the concept of distributed energy production.
+            For most people, the solar energy industry still looks like a breakthrough made in the last decade and a half. However, the very idea and the beginning of the development of solar energy goes back almost two hundred years.
+          </p>
         </div>
       </div>
-    </div>
-    <div class="text-center text-md-left" style="margin-left: 30px">
-      <h2
-        class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">
-        Comments:
-      </h2>
-      <br>
-      <div class="text-center text-md-left" *ngFor="let news of news.comments">
-        <h4
-          class="h4-responsive text-center text-md-left product-name dark-grey-text mb-1 ml-xl-0 ml-4">
-          {{news.userName}}
-        </h4>
-        <p class=" text-center grey-text text-md-left mb-4 ml-xl-0 ml-4"> {{news.date}} </p>
-        <p class="font-weight-normal ml-xl-0 ml-4">{{news.commentText}}</p>
-      </div>
-      <div class="row form-inline d-flex justify-content-md-start">
-        <button type="button" class="btn btn-rounded" [hidden]="hideBTN" (click)="changeCommentVissiblity()" style="width: 200px;
-        margin-bottom: 30px; position: center;">Add Comment <i class="fas fa-angle-right right"></i>
-        </button>
-      </div>
-      <div [hidden]="hideComment">
-      <textarea class="form-control rounded col-md-4 mb-4" id="message" rows="3" placeholder="Your comment..."
-                name="information" #commentText
-      ></textarea>
-      <button type="button" class="btn btn-rounded" (click)="addComment(commentText.value)" style="width: 200px;
-       position: center;">Send <i class="fas fa-angle-right right"></i>
-      </button>
-    </div>
     </div>
   </section>
   <!--Section: Content-->
+  <div class="font-weight-normal" style="margin-left: 50px; margin-right: 50px">
+    <p class="ml-xl-0 ml-4">In the world, the annual growth of energy over the past five years has averaged about 50 %. The energy obtained from solar radiation will hypothetically be able to provide 20-25% of humanity's electricity needs by 2050 and reduce carbon dioxide emissions. According to experts of the International Energy Agency (IEA), solar energy in 40 years with the appropriate level of dissemination of advanced technologies will generate about 9 thousand terawatt-hours — or 20-25% of all necessary electricity, and this will reduce carbon dioxide emissions by 6 billion tons annually.
+      The prospects for using the sun to generate electricity are deteriorating due to high costs. Thus, the Aiwonpa power plant costs four times more, and generates much less electricity, compared to gas-fired power plants. According to experts, in the future, the electricity generated by this station will cost twice as much as received from conventional energy sources, and the costs will obviously be passed on to consumers.
+    </p>
+  </div>
 
   <p class="grey-text mt-5 pb-2 text-uppercase" style="margin-left: 20px">You may like also</p>
 
@@ -148,13 +99,13 @@
           <div class="news-tile view zoom z-depth-1 rounded mb-4">
 
             <a href="#!" class="text-white">
-              <img src="assets/0009.jpg"
+              <img src="https://mdbootstrap.com/img/Photos/Horizontal/City/6-col/img%20(35).jpg"
                    class="img-fluid z-depth-1 rounded" alt="sample image">
               <div class="mask flex-center rgba-black-light">
                 <div class="text-white text-center py-lg-5 py-0 my-0">
                   <div>
                     <h4 class="card-title font-weight-bold pt-2">
-                      <strong>Solar Systems</strong>
+                      <strong>This is news title</strong>
                     </h4>
 
                     <p class="mx-5 clearfix d-none d-md-block"></p>
@@ -176,13 +127,13 @@
           <div class="news-tile view zoom z-depth-1 rounded mb-4">
 
             <a href="#!" class="text-white">
-              <img src="assets/0010.jpg"
+              <img src="https://mdbootstrap.com/img/Photos/Horizontal/City/6-col/img%20(36).jpg"
                    class="img-fluid z-depth-1 rounded" alt="sample image">
               <div class="mask flex-center rgba-black-light">
                 <div class="text-white text-center py-lg-5 py-0 my-0">
                   <div>
                     <h4 class="card-title font-weight-bold pt-2">
-                      <strong>Solar Panels</strong>
+                      <strong>This is news title</strong>
                     </h4>
 
                     <p class="mx-5 clearfix d-none d-md-block"></p>
@@ -204,13 +155,13 @@
           <div class="news-tile view zoom z-depth-1 rounded mb-4">
 
             <a href="#!" class="text-white">
-              <img src="assets/0011.jpg"
+              <img src="https://mdbootstrap.com/img/Photos/Horizontal/City/6-col/img%20(37).jpg"
                    class="img-fluid z-depth-1 rounded" alt="sample image">
               <div class="mask flex-center rgba-black-light">
                 <div class="text-white text-center py-lg-5 py-0 my-0">
                   <div>
                     <h4 class="card-title font-weight-bold pt-2">
-                      <strong>Solar Energy</strong>
+                      <strong>This is news title</strong>
                     </h4>
 
                     <p class="mx-5 clearfix d-none d-md-block"></p>

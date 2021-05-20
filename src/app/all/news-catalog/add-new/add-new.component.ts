@@ -107,7 +107,7 @@ export class AddNewComponent implements OnInit, ComponentCanDeactivate {
     this.model = new News(this.id, this.orderForm.getRawValue().category, this.categoryName,
       this.orderForm.getRawValue().name, this.orderForm.getRawValue().image, this.orderForm.getRawValue().image,
       this.orderForm.getRawValue().image,
-      this.orderForm.getRawValue().information);
+      this.orderForm.getRawValue().information, 1000);
 
     this.newsService.addNews(this.model).subscribe(data => console.log(data), error => console.log(error));
   }

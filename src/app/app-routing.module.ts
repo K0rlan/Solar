@@ -10,6 +10,8 @@ import {FavoriteListComponent} from './all/favorite-list/favorite-list.component
 import {CatalogComponent} from './all/catalog/catalog.component';
 import {OrderComponent} from './all/order/order.component';
 import {NewsCatalogComponent} from './all/news-catalog/news-catalog.component';
+import {BasketComponent} from './all/basket/basket.component';
+import {AboutComponent} from "./all/about/about.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -17,6 +19,11 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'catalog', component: NewsCatalogComponent},
   {path: 'catalog/order', component: OrderComponent, canActivate: [AuthClass]},
+  {path: 'basket', component: BasketComponent, canActivate: [AuthClass]},
+  {path: 'about', component: AboutComponent, canActivate: [AuthClass]},
+  {path: 'catalog/basket', component: BasketComponent, canActivate: [AuthClass]},
+  {path: 'catalog/basket/order', component: OrderComponent, canDeactivate: [ExitOrderGuard]},
+  {path: 'basket/order', component: OrderComponent, canDeactivate: [ExitOrderGuard]},
   {path: 'favourites', component: FavoriteListComponent, canActivate: [AuthClass]},
   {path: 'categories/:id', canActivate: [AuthClass], loadChildren: () => import('./all/categories/categories.module')
       .then(allModule => allModule.CategoriesModule)},

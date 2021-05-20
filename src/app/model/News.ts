@@ -10,9 +10,10 @@ export class News {
   likes: number;
   liked: Liked[];
   comments: Comments[];
+  cost: number;
 
   constructor(id: number, categoryId: number, category: string, name: string,
-              image: string, image2: string, image3: string, information: string) {
+              image: string, image2: string, image3: string, information: string, cost: number) {
     this.id = id;
     this.categoryId = categoryId;
     this.category = category;
@@ -21,6 +22,7 @@ export class News {
     this.image2 = image2;
     this.image3 = image3;
     this.information = information;
+    this.cost = cost
   }
 }
 

@@ -49,6 +49,21 @@ export class NewsDetailComponent implements OnInit {
     });
   }
 
+  addToBasket(): any{
+    this.user.basket.push(this.news);
+    this.accountService.update(this.user)
+      .pipe(first())
+      .subscribe(
+        data => {
+          alert('Successfully added to basket');
+          console.log('Successfully added to basket');
+          this.router.navigate(['../../../../basket'], { relativeTo: this.activateRoute });
+        },
+        error => {
+          alert('error');
+        });
+  }
+
   // tslint:disable-next-line:typedef
   changeCommentVissiblity() {
     this.hideBTN = !this.hideBTN;

@@ -7,6 +7,7 @@ export class User{
   password: string;
   role: string;
   favList: News[];
+  basket: News[];
 
   constructor(id: number, name: string, email: string, password: string) {
     this.id = id;
@@ -15,5 +16,6 @@ export class User{
     this.password = password;
     this.role = 'user';
     this.favList = [];
+    this.basket = [];
   }
 }

@@ -27,6 +27,8 @@ import {OrderComponent} from './all/order/order.component';
 import {NewsCatalogComponent} from './all/news-catalog/news-catalog.component';
 import {AddNewComponent} from './all/news-catalog/add-new/add-new.component';
 import {NewListComponent} from './all/news-catalog/new-list/new-list.component';
+import {BasketComponent} from './all/basket/basket.component';
+import { AboutComponent } from './all/about/about.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import {NewListComponent} from './all/news-catalog/new-list/new-list.component';
     OrderComponent,
     NewsCatalogComponent,
     AddNewComponent,
-    NewListComponent
+    NewListComponent,
+    BasketComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
